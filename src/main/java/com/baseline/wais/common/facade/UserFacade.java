@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.baseline.wais.common.dto.request.UserRequest;
 import com.baseline.wais.common.dto.response.UserResponse;
-import com.baseline.wais.common.dto.response.VoidResponse;
+import com.baseline.wais.common.dto.response.CommonResponse;
 
 public interface UserFacade {
 	
@@ -12,7 +12,7 @@ public interface UserFacade {
 	
 	UserResponse findById(Integer id);
 	
-	VoidResponse save(UserRequest userEntity);
+	CommonResponse save(UserRequest userEntity);
 	
-	VoidResponse delete(Integer id);
+	CommonResponse delete(Integer id);
 }

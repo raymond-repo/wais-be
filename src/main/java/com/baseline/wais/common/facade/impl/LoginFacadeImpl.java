@@ -28,7 +28,7 @@ public class LoginFacadeImpl implements LoginFacade {
 	private UserDetailsService userDetailsService;
 
 	@Override
-	public LoginResponse authinticateLogin(LoginRequest loginRequest) {
+	public LoginResponse authenticateLogin(LoginRequest loginRequest) {
 		try {
 			authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));

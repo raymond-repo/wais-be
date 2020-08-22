@@ -1,4 +1,4 @@
-package com.baseline.wais.common.dto.response;
+package com.baseline.wais.common.dto;
 
 import java.io.Serializable;
 
@@ -9,16 +9,19 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class ErrorResponse implements Serializable {
+@NoArgsConstructor
+public class ResponseHandler implements Serializable {
 	
 	/** Serial Version UID */
 	private static final long serialVersionUID = 1L;
-	
-	private String timestamp;
-	
-	private Object error;
-	
-	private Object status;
+
+	private String status;
+
+	private Object result;
+
+	public ResponseHandler(Object result) {
+		this.status = "SUCCESS";
+		this.result = result;
+	}
 }

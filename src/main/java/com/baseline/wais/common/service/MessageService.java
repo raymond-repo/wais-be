@@ -2,7 +2,7 @@ package com.baseline.wais.common.service;
 
 import java.util.List;
 
-import com.baseline.wais.common.dto.Message;
+import com.baseline.wais.common.dto.MessageResponse;
 
 public interface MessageService {
 
@@ -10,9 +10,9 @@ public interface MessageService {
 
 	String getLongMessage(String code);
 
-	Message findByCode(String code);
+	MessageResponse findByCode(String code);
 
-	List<Message> findAll();
+	List<MessageResponse> findAll();
 
-	void save(Message message);
+	void save(MessageResponse message);
 }

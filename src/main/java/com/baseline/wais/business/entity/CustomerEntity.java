@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name="T_CUSTOMER")
+//@Entity(name="T_CUSTOMER")
 public class CustomerEntity implements Serializable {
 
 	/** Serial Version UID */

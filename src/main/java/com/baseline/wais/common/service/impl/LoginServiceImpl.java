@@ -23,7 +23,6 @@ public class LoginServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) {
 		LoginEntity loginEntity = loginRepository.findByUsername(username);
-		
 		if (ObjectUtil.isNull(loginEntity)) {
 			throw new BusinessFailureException(username + " not found", HttpStatus.NOT_FOUND);
 		}

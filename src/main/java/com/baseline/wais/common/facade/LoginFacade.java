@@ -5,5 +5,5 @@ import com.baseline.wais.common.dto.response.LoginResponse;
 
 public interface LoginFacade {
 
-	LoginResponse authinticateLogin(LoginRequest loginRequest);
+	LoginResponse authenticateLogin(LoginRequest loginRequest);
 }

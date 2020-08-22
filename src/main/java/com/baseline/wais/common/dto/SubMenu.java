@@ -1,5 +1,7 @@
 package com.baseline.wais.common.dto;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,13 +11,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Message {
+public class SubMenu implements Serializable {
 
-	private String code;
+	/** Serial Version UID */
+	private static final long serialVersionUID = 1L;
 	
-	private String shortMessage;
+	private String name;
 	
-	private String longMessage;
-	
-	private String type;
+	private String path;
+
 }

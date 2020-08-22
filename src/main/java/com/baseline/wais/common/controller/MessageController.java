@@ -1,7 +1,5 @@
 package com.baseline.wais.common.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baseline.wais.common.dto.Message;
-import com.baseline.wais.common.dto.response.VoidResponse;
+import com.baseline.wais.common.dto.MessageResponse;
+import com.baseline.wais.common.dto.ResponseHandler;
 import com.baseline.wais.common.facade.MessageFacade;
 
 @RestController
@@ -25,17 +23,17 @@ public class MessageController {
 	public MessageFacade messageFacade;
 	
 	@GetMapping("/findAll")
-	public List<Message> findAll() {
-		return messageFacade.findAll();
+	public ResponseHandler findAll() {
+		return new ResponseHandler(messageFacade.findAll());
 	}
 	
 	@GetMapping("/findByCode")
-	public Message findByCode(@RequestParam String code) {
-		return messageFacade.findByCode(code);
+	public ResponseHandler findByCode(@RequestParam String code) {
+		return new ResponseHandler(messageFacade.findByCode(code));
 	}
 	
 	@PostMapping("/save")
-	public VoidResponse save(@RequestBody @Valid Message message, Errors errors) {
-		return messageFacade.save(message);
+	public ResponseHandler save(@RequestBody @Valid MessageResponse message, Errors errors) {
+		return new ResponseHandler(messageFacade.save(message));
 	}
 }

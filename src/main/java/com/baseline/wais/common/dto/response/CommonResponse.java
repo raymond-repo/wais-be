@@ -2,8 +2,6 @@ package com.baseline.wais.common.dto.response;
 
 import java.io.Serializable;
 
-import org.springframework.http.HttpStatus;
-
 import com.baseline.wais.common.util.DateTimeUtil;
 
 import lombok.AllArgsConstructor;
@@ -15,20 +13,17 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class VoidResponse implements Serializable {
+public class CommonResponse implements Serializable {
 	
 	/** Serial Version UID */
 	private static final long serialVersionUID = 1L;
 	
 	private String timestamp;
 	
-	private String message;
+	private Object message;
 	
-	private HttpStatus status;
-	
-	public VoidResponse(String message) {
+	public CommonResponse(String message) {
 		this.timestamp = DateTimeUtil.getCurrentDateTime();
 		this.message = message;
-		this.status = HttpStatus.OK;
 	}
 }

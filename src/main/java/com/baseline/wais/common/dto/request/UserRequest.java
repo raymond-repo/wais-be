@@ -17,6 +17,8 @@ public class UserRequest implements Serializable {
 
 	/** Serial Version UID */
 	private static final long serialVersionUID = 1L;
+	
+	private String id;
 
 	@NotBlank
 	private String firstName;

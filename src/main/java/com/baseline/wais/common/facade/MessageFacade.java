@@ -2,8 +2,8 @@ package com.baseline.wais.common.facade;
 
 import java.util.List;
 
-import com.baseline.wais.common.dto.Message;
-import com.baseline.wais.common.dto.response.VoidResponse;
+import com.baseline.wais.common.dto.MessageResponse;
+import com.baseline.wais.common.dto.response.CommonResponse;
 
 public interface MessageFacade {
 
@@ -11,9 +11,9 @@ public interface MessageFacade {
 	
 	String getLongMessage(String code);
 	
-	Message findByCode(String code);
+	MessageResponse findByCode(String code);
 
-	List<Message> findAll();
+	List<MessageResponse> findAll();
 
-	VoidResponse save(Message message);
+	CommonResponse save(MessageResponse message);
 }

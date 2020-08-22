@@ -10,10 +10,10 @@ import com.baseline.wais.common.entity.MessageEntity;
 @Repository
 public interface MessageRepository extends JpaRepository<MessageEntity, String> {
 	
-	@Query("SELECT shortMessage FROM message WHERE code = :code")
+	@Query("SELECT shortMessage FROM T_MESSAGE WHERE code = :code")
 	public String getShortMessageByCode(@Param("code") String code);
 	
-	@Query("SELECT longMessage FROM message WHERE code = :code")
+	@Query("SELECT longMessage FROM T_MESSAGE WHERE code = :code")
 	public String getLongMessageByCode(@Param("code") String code);
 
 }

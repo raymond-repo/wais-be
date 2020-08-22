@@ -1,7 +1,5 @@
 package com.baseline.wais.common.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.baseline.wais.common.dto.ResponseHandler;
 import com.baseline.wais.common.dto.request.UserRequest;
-import com.baseline.wais.common.dto.response.UserResponse;
-import com.baseline.wais.common.dto.response.VoidResponse;
 import com.baseline.wais.common.facade.UserFacade;
 
 @RestController
@@ -26,22 +23,22 @@ public class UserController {
 	private UserFacade userFacade;
 	
 	@GetMapping("/findAll")
-	public List<UserResponse> findAll() {
-		return userFacade.findAll();
+	public ResponseHandler findAll() {
+		return new ResponseHandler(userFacade.findAll());
 	}
 	
 	@GetMapping("/findById")
-	public UserResponse findById(@RequestParam Integer id) {
-		return userFacade.findById(id);
+	public ResponseHandler findById(@RequestParam Integer id) {
+		return new ResponseHandler(userFacade.findById(id));
 	}
 	
 	@PostMapping("/save")
-	public VoidResponse save(@RequestBody @Valid UserRequest user) {
-		return userFacade.save(user);
+	public ResponseHandler save(@RequestBody @Valid UserRequest user) {
+		return new ResponseHandler(userFacade.save(user));
 	}
 	
 	@DeleteMapping("/delete")
-	public VoidResponse delete(@RequestParam Integer id) {
-		return userFacade.delete(id);
+	public ResponseHandler delete(@RequestParam Integer id) {
+		return new ResponseHandler(userFacade.delete(id));
 	}
 }

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.baseline.wais.common.dto.Message;
+import com.baseline.wais.common.dto.MessageResponse;
 import com.baseline.wais.common.entity.MessageEntity;
 import com.baseline.wais.common.exception.BusinessFailureException;
 import com.baseline.wais.common.repository.MessageRepository;
@@ -24,13 +24,13 @@ public class MessageServiceImpl implements MessageService {
 	private MessageRepository messageRepository;
 
 	@Override
-	public Message findByCode(String code) {
+	public MessageResponse findByCode(String code) {
 
 		Optional<MessageEntity> optional = messageRepository.findById(code);
-		Message message = null;
+		MessageResponse message = null;
 		if (optional.isPresent()) {
 			MessageEntity messageEntity = optional.get();
-			message = new Message();
+			message = new MessageResponse();
 			ObjectUtil.mapObject(messageEntity, message);
 		}
 		return message;
@@ -61,12 +61,12 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public List<Message> findAll() {
+	public List<MessageResponse> findAll() {
 		List<MessageEntity> messageEntities = messageRepository.findAll();
 
-		List<Message> messages = new ArrayList<>();
+		List<MessageResponse> messages = new ArrayList<>();
 		for (MessageEntity messageEntity : messageEntities) {
-			Message message = new Message();
+			MessageResponse message = new MessageResponse();
 			BeanUtils.copyProperties(messageEntity, message);
 			messages.add(message);
 		}
@@ -75,7 +75,7 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public void save(Message message) {
+	public void save(MessageResponse message) {
 		MessageEntity messageEntity = new MessageEntity();
 		BeanUtils.copyProperties(message, messageEntity);
 		messageRepository.save(messageEntity);

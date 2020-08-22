@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.baseline.wais.common.constant.BusinessConstant;
-import com.baseline.wais.common.dto.Message;
-import com.baseline.wais.common.dto.response.VoidResponse;
+import com.baseline.wais.common.dto.MessageResponse;
+import com.baseline.wais.common.dto.response.CommonResponse;
 import com.baseline.wais.common.facade.MessageFacade;
 import com.baseline.wais.common.service.MessageService;
 
@@ -28,19 +28,19 @@ public class MessageFacadeImpl implements MessageFacade {
 	}
 
 	@Override
-	public Message findByCode(String code) {
+	public MessageResponse findByCode(String code) {
 		return messageService.findByCode(code);
 	}
 
 	@Override
-	public List<Message> findAll() {
+	public List<MessageResponse> findAll() {
 		return messageService.findAll();
 	}
 
 	@Override
-	public VoidResponse save(Message message) {
+	public CommonResponse save(MessageResponse message) {
 		messageService.save(message);
-		return new VoidResponse(
+		return new CommonResponse(
 				String.format(
 						getShortMessage(BusinessConstant.SUCCESS_0001)
 						, "Message"));

@@ -13,21 +13,20 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.baseline.wais.common.dto.response.ErrorResponse;
+import com.baseline.wais.common.dto.response.CommonResponse;
 import com.baseline.wais.common.util.DateTimeUtil;
 
 @RestControllerAdvice
 public class BusinessFailureExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler
-	public ResponseEntity<Object> handleNullPointerException(BusinessFailureException invalidFieldException) {
+	public ResponseEntity<Object> handleBusinessFailureException(BusinessFailureException invalidFieldException) {
 
-		ErrorResponse errorResponse = new ErrorResponse();
-		errorResponse.setTimestamp(DateTimeUtil.getCurrentDateTime());
-		errorResponse.setError(invalidFieldException.getMessage());
-		errorResponse.setStatus(invalidFieldException.getStatus());
+		CommonResponse errResponse = new CommonResponse();
+		errResponse.setTimestamp(DateTimeUtil.getCurrentDateTime());
+		errResponse.setMessage(invalidFieldException.getMessage());
 	
-		return new ResponseEntity<>(errorResponse, invalidFieldException.getStatus());
+		return new ResponseEntity<>(errResponse, invalidFieldException.getStatus());
 	}
 
 	@Override
@@ -39,23 +38,21 @@ public class BusinessFailureExceptionHandler extends ResponseEntityExceptionHand
 			errors.put(x.getField(), x.getDefaultMessage());
 		});
 
-		ErrorResponse errorResponse = new ErrorResponse();
-		errorResponse.setTimestamp(DateTimeUtil.getCurrentDateTime());
-		errorResponse.setError(errors);
-		errorResponse.setStatus(status.value());
+		CommonResponse errResponse = new CommonResponse();
+		errResponse.setTimestamp(DateTimeUtil.getCurrentDateTime());
+		errResponse.setMessage(errors);
 
-		return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(errResponse, HttpStatus.METHOD_NOT_ALLOWED);
 	}
 	
 	@Override
 	protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(
 			HttpRequestMethodNotSupportedException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 		
-		ErrorResponse errorResponse = new ErrorResponse();
-		errorResponse.setTimestamp(DateTimeUtil.getCurrentDateTime());
-		errorResponse.setError(ex.getMessage());
-		errorResponse.setStatus(status.value());
+		CommonResponse errResponse = new CommonResponse();
+		errResponse.setTimestamp(DateTimeUtil.getCurrentDateTime());
+		errResponse.setMessage(ex.getMessage());
 		
-		return new ResponseEntity<>(errorResponse, HttpStatus.METHOD_NOT_ALLOWED);
+		return new ResponseEntity<>(errResponse, HttpStatus.METHOD_NOT_ALLOWED);
 	}
 }
