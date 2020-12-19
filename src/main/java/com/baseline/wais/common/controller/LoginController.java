@@ -6,13 +6,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.baseline.wais.base.controller.AbstractWaisController;
 import com.baseline.wais.common.dto.ResponseHandler;
 import com.baseline.wais.common.dto.request.LoginRequest;
 import com.baseline.wais.common.facade.LoginFacade;
 
 @RestController
 @RequestMapping
-public class LoginController {
+public class LoginController extends AbstractWaisController {
 
 	@Autowired
 	private LoginFacade loginFacade;

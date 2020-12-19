@@ -9,15 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
+import com.baseline.wais.base.controller.AbstractWaisController;
 import com.baseline.wais.common.dto.MessageResponse;
 import com.baseline.wais.common.dto.ResponseHandler;
 import com.baseline.wais.common.facade.MessageFacade;
 
-@RestController
 @RequestMapping("message")
-public class MessageController {
+public class MessageController extends AbstractWaisController {
 	
 	@Autowired
 	public MessageFacade messageFacade;

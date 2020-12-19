@@ -37,7 +37,7 @@ public class LoginFacadeImpl implements LoginFacade {
 		}
 
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.getUsername());
-
+		
 		return new LoginResponse(authorizationService.generateToken(userDetails));
 	}
 

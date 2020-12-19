@@ -7,15 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
+import com.baseline.wais.base.controller.AbstractWaisController;
 import com.baseline.wais.common.dto.ResponseHandler;
 import com.baseline.wais.common.dto.response.MenuResponse;
 import com.baseline.wais.common.facade.MenuFacade;
 
-@RestController
 @RequestMapping("/menu")
-public class MenuController {
+public class MenuController extends AbstractWaisController {
 	
 	@Autowired
 	public MenuFacade menuFacade;

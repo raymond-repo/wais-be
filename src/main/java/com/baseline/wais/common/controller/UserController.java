@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.baseline.wais.base.controller.AbstractWaisController;
 import com.baseline.wais.common.dto.ResponseHandler;
 import com.baseline.wais.common.dto.request.UserRequest;
 import com.baseline.wais.common.facade.UserFacade;
 
 @RestController
 @RequestMapping("user")
-public class UserController {
+public class UserController extends AbstractWaisController {
 
 	@Autowired
 	private UserFacade userFacade;
