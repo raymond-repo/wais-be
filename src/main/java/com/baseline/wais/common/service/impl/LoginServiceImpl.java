@@ -13,6 +13,7 @@ import com.baseline.wais.common.entity.LoginEntity;
 import com.baseline.wais.common.exception.BusinessFailureException;
 import com.baseline.wais.common.repository.LoginRepository;
 import com.baseline.wais.common.util.ObjectUtil;
+import com.baseline.wais.common.util.StringUtil;
 
 @Service
 public class LoginServiceImpl implements UserDetailsService {
@@ -23,6 +24,8 @@ public class LoginServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) {
 		LoginEntity loginEntity = loginRepository.findByUsername(username);
+		
+		String a = StringUtil.bCryptPassword(username);
 		if (ObjectUtil.isNull(loginEntity)) {
 			throw new BusinessFailureException(username + " not found", HttpStatus.NOT_FOUND);
 		}
