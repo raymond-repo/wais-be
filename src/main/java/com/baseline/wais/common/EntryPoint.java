@@ -6,12 +6,12 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.baseline.wais.common", "com.baseline.wais.business"})
 @EntityScan({"com.baseline.wais.common.entity", "com.baseline.wais.business.entity"})
-@EnableJpaRepositories({"com.baseline.wais.common.repository", "com.baseline.wais.business.repository"})
+@EnableMongoRepositories({"com.baseline.wais.common.repository", "com.baseline.wais.business.repository"})
 public class EntryPoint extends SpringBootServletInitializer {
 
 	@Override

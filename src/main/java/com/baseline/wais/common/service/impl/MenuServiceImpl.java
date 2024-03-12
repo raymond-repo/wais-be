@@ -22,7 +22,7 @@ public class MenuServiceImpl implements MenuService {
 
 	@Override
 	public List<MenuResponse> listofMenu() {
-		List<MenuEntity> listOfMenu = menuRepository.findAll();
+		Iterable<MenuEntity> listOfMenu = menuRepository.findAll();
 
 		List<MenuResponse> menuResponseList = new ArrayList<>();
 		for (MenuEntity menuEntity : listOfMenu) {

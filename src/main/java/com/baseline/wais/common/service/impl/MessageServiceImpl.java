@@ -42,7 +42,7 @@ public class MessageServiceImpl implements MessageService {
 		String shortMessage = messageRepository.getShortMessageByCode(code);
 
 		if (StringUtil.isNull(shortMessage)) {
-			throw new BusinessFailureException(StringUtil.concat("Short message for ", code, "not found"), HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new BusinessFailureException(StringUtil.concat("Short message for ", code, " not found"), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 		return shortMessage;
@@ -62,7 +62,7 @@ public class MessageServiceImpl implements MessageService {
 
 	@Override
 	public List<MessageResponse> findAll() {
-		List<MessageEntity> messageEntities = messageRepository.findAll();
+		Iterable<MessageEntity> messageEntities = messageRepository.findAll();
 
 		List<MessageResponse> messages = new ArrayList<>();
 		for (MessageEntity messageEntity : messageEntities) {

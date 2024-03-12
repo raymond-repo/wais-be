@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 
 import com.baseline.wais.common.constant.BusinessConstant;
 import com.baseline.wais.common.dto.request.UserRequest;
-import com.baseline.wais.common.dto.response.UserResponse;
 import com.baseline.wais.common.dto.response.CommonResponse;
+import com.baseline.wais.common.dto.response.UserResponse;
 import com.baseline.wais.common.facade.UserFacade;
 import com.baseline.wais.common.service.MessageService;
 import com.baseline.wais.common.service.UserService;
@@ -34,9 +34,10 @@ public class UserFacadeImpl implements UserFacade {
 
 	@Override
 	public CommonResponse save(UserRequest userEntity) {
+		
 		userService.save(userEntity);
 		
-		return new CommonResponse(messageService.getShortMessage(BusinessConstant.SUCCESS_0001));
+		return new CommonResponse("Successfuly Created");
 	}
 
 	@Override
